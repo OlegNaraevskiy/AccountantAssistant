@@ -1,0 +1,9 @@
+/AccountantAssistant/.editorconfig
+/AccountantAssistant/.vs/*
+/AccountantAssistant/AccountantApp/node_modules/*
+/AccountantAssistant/AccountantAssistant.BusinessLayer/bin/*
+/AccountantAssistant/AccountantAssistant.BusinessLayer/obj/*
+/AccountantAssistant/AccountantAssistant.DataLayer/bin/*
+/AccountantAssistant/AccountantAssistant.DataLayer/obj/*
+/AccountantAssistant/AccountantAssistant/bin/*
+/AccountantAssistant/AccountantAssistant/obj/*
