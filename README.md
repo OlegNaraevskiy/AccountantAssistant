@@ -3,4 +3,4 @@ MVP проект для демонстрации использования мн
 
 Проект работает под лицензией CC BY-NC-SA 3.0:
 
-![Image of LICENSE](https://raw.githubusercontent.com/OlegNaraevskiy/AccountantAssistant/main/by-nc-sa.png?token=AUW64BFABGWZSGHCATRGGVTBPAUYY)
+![Image of LICENSE](https://github.com/OlegNaraevskiy/AccountantAssistant/blob/main/by-nc-sa.png)
