@@ -46,7 +46,7 @@ namespace AccountantAssistant.Controllers
 		[ProducesResponseType(StatusCodes.Status200OK)]
 		[ProducesResponseType(StatusCodes.Status400BadRequest)]
 		[ProducesResponseType(StatusCodes.Status500InternalServerError)]
-		public ActionResult<EmployeeDto> Post(AddEmployee value)
+		public ActionResult<EmployeeDto> Post([FromBody] AddEmployee value)
 		{
 			EmployeeDto resultModel = new EmployeeDto();
 
@@ -72,9 +72,42 @@ namespace AccountantAssistant.Controllers
 		}
 
 		// PUT api/<EmployeesController>/5
-		[HttpPut("{id}")]
-		public void Put(int id, [FromBody] string value)
+		[HttpPut]
+		[ProducesResponseType(StatusCodes.Status200OK)]
+		[ProducesResponseType(StatusCodes.Status400BadRequest)]
+		[ProducesResponseType(StatusCodes.Status500InternalServerError)]
+		public ActionResult<EmployeeDto> Put([FromBody] EmployeeDto value)
 		{
+			EmployeeDto resultModel = new EmployeeDto();
+
+			if (!ModelState.IsValid)
+			{
+				return BadRequest(ModelState);
+			}
+			else
+			{
+				var employee = _employeeActions.Get(value.EmployeeId);
+
+				if (employee == null || employee.Employee == null || employee.Code != 0)
+				{
+					return BadRequest(ModelState);
+				}
+
+				//employee.
+
+				var employeeResult = _employeeActions.Update(null);
+
+				if (employeeResult.Code == 0)
+				{
+					resultModel = employeeResult.Employee;
+
+					return resultModel;
+				}
+				else
+				{
+					return new StatusCodeResult(500);
+				}
+			}
 		}
 
 		// DELETE api/<EmployeesController>/5

@@ -63,10 +63,9 @@ namespace AccountantAssistant.DataLayer.Services
 		public Employee Update(Employee item)
 		{
 			dbContext.Entry(item).State = EntityState.Modified;
+			Save();
 
-			var employeerId = Save();
-
-			return GetOne(employeerId);
+			return GetOne(item.EmployeeId);
 		}
 
 		public int Save()

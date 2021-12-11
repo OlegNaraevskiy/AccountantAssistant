@@ -152,9 +152,40 @@ namespace AccountantAssistant.BusinessLayer.Services
 			return result;
 		}
 
-		public EmployeeResult Update(EmployeeDto employee)
+		public EmployeeResult Update(EditEmployee employee)
 		{
-			throw new System.NotImplementedException();
+			EmployeeResult result = CallMethod<EmployeeResult>(
+			() => {
+				EmployeeResult resAction = new EmployeeResult();
+
+				EmployeeDto resEmployee = null;
+
+				using (_employeeDb)
+				{
+					Employee dEmployee = SMapper.Mapper.Map<Employee>(employee);
+
+					var addEmplresult = _employeeDb.Update(dEmployee);
+
+					resEmployee = SMapper.Mapper.Map<EmployeeDto>(addEmplresult);
+				}
+
+				if (resEmployee != null && resEmployee.EmployeeId > 0)
+				{
+					resAction.Code = 0;
+					resAction.Message = "Успех";
+
+					resAction.Employee = resEmployee;
+				}
+				else
+				{
+					resAction.Code = 1;
+					resAction.Message = "Данные не записаны";
+				}
+
+				return resAction;
+			});
+
+			return result;
 		}
 	}
 }

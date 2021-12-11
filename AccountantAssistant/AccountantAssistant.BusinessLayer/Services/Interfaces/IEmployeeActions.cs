@@ -18,7 +18,7 @@ namespace AccountantAssistant.BusinessLayer.Services.Interfaces
 
 		public EmployeeResult Set(AddEmployee employee);
 
-		public EmployeeResult Update(EmployeeDto employee);
+		public EmployeeResult Update(EditEmployee employee);
 
 		public BaseResult Delete(int Id);
 	}
